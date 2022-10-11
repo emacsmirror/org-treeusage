@@ -29,7 +29,7 @@ Popped from and pushed to, as the org file is parsed.")
 
 (defun org-treeusage-parse--gettitlebounds (info)
   "Get header title and the bounding positions from org element INFO."
-  (let ((head (plist-get info :title))
+  (let ((head (or (plist-get info :raw-value) (plist-get info :title)))
         (bend (plist-get info :contents-begin))
         (bbeg (line-beginning-position)))
     (when head
